@@ -11,20 +11,15 @@ from engine.model import load_repo
 
 
 ROOT = Path(__file__).resolve().parents[1]
+EXAMPLE = ROOT / "examples" / "japan-summer-2026"
 
 
-class StarterRepoTests(unittest.TestCase):
-    def test_starter_fails_hard_checks(self) -> None:
+class ScaffoldRepoTests(unittest.TestCase):
+    def test_scaffold_fails_claim_gates(self) -> None:
         loaded = load_repo(ROOT)
         codes = {item.code for item in evaluate(loaded)}
         self.assertIn("claim-the-trip", codes)
         self.assertIn("remove-starter-note", codes)
-
-    def test_facts_emit_early_start_and_weather(self) -> None:
-        context = build_context(load_repo(ROOT))
-        kinds = {(item.get("type"), item.get("path")) for item in context["facts"]}
-        self.assertIn(("clock_before", "itinerary/fushimi-early.yaml"), kinds)
-        self.assertIn(("boolean_true", "itinerary/kyoto-kimono.yaml"), kinds)
 
     def test_engine_has_no_travel_words(self) -> None:
         banned = ("trip", "booking", "itinerary", "traveler", "kimono", "sleep")
@@ -32,6 +27,19 @@ class StarterRepoTests(unittest.TestCase):
             text = path.read_text(encoding="utf-8").lower()
             for word in banned:
                 self.assertNotIn(word, text, f"{path.name} contains {word!r}")
+
+
+class ExampleRepoTests(unittest.TestCase):
+    def test_example_emits_early_start_and_weather_facts(self) -> None:
+        context = build_context(load_repo(EXAMPLE, ROOT / "domains"))
+        kinds = {(item.get("type"), item.get("path")) for item in context["facts"]}
+        self.assertIn(("clock_before", "itinerary/fushimi-early.yaml"), kinds)
+        self.assertIn(("boolean_true", "itinerary/kyoto-kimono.yaml"), kinds)
+
+    def test_example_is_claimed(self) -> None:
+        codes = {item.code for item in evaluate(load_repo(EXAMPLE, ROOT / "domains"))}
+        self.assertNotIn("claim-the-trip", codes)
+        self.assertNotIn("remove-starter-note", codes)
 
 
 class CleanRepoTests(unittest.TestCase):

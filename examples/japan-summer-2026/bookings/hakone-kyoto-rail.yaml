@@ -1,0 +1,13 @@
+schema_version: 1
+id: hakone-kyoto-rail
+type: transport
+provider: Rail
+status: confirmed
+start: "2026-08-23T11:00:00+09:00"
+end: "2026-08-23T15:00:00+09:00"
+location: {name: Hakone to Kyoto}
+exclusive: false
+cost: {amount: 120, currency: USD, commitment: committed}
+refundable: null
+cancellation_deadline: null
+external_ref: null

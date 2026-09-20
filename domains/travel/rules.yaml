@@ -5,7 +5,7 @@ rules:
     document: trip
     field: starter
     equals: true
-    message: This is still the Japan summer 2026 starter. Replace party ids and records for your journey, delete STARTER.md, set starter to false.
+    message: This is still an unclaimed Japan trip starter. Replace party ids and records for your journey, delete STARTER.md, set starter to false.
 
   - id: remove-starter-note
     type: path_present

@@ -1,0 +1,30 @@
+schema_version: 1
+currency: USD
+total: 9700
+reserve: 290
+hard_cap: null
+categories:
+  - id: international-flights
+    label: International flights
+    amount: 3100
+  - id: tokyo-hotel
+    label: Tokyo hotel nights
+    amount: 1250
+  - id: hakone-ryokan
+    label: Hakone ryokan
+    amount: 800
+  - id: kyoto-hotel
+    label: Kyoto hotel nights
+    amount: 900
+  - id: rail-and-transit
+    label: Rail, transit, taxis, luggage
+    amount: 920
+  - id: food
+    label: Food and nonalcoholic drinks
+    amount: 1250
+  - id: experiences
+    label: Photo, craft, admissions
+    amount: 890
+  - id: contingency
+    label: Contingency
+    amount: 290

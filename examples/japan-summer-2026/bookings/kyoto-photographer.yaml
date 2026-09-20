@@ -1,0 +1,11 @@
+schema_version: 1
+id: kyoto-photographer
+type: activity
+provider: Photographer
+status: research
+location: {name: Kyoto}
+exclusive: false
+cost: {amount: 275, currency: USD, commitment: estimated}
+refundable: null
+cancellation_deadline: null
+external_ref: null

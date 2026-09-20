@@ -1,0 +1,14 @@
+schema_version: 1
+id: teamlab-planets
+title: teamLab Planets
+kind: anchor
+status: proposed
+day: "2026-08-19"
+start: "2026-08-19T10:00:00+09:00"
+end: "2026-08-19T13:00:00+09:00"
+timezone: Asia/Tokyo
+location: {name: Tokyo}
+exclusive: false
+independent_anchor: true
+weather_sensitive: false
+booking_ids: [teamlab-tickets]

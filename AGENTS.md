@@ -4,7 +4,8 @@ This file is the instruction set for Cursor, Claude, and ChatGPT while a person 
 
 `main` is the accepted trip. You propose changes. The traveler merges them. Chat is not the record. Never edit `main` directly, and never treat your agreement as a decision.
 
-The files here are a claimable Japan summer itinerary, not an empty schema demo. Treat them as a real plan to edit. Checks fail until `STARTER.md` is gone and `starter` in `trip.yaml` is false. `hard_constraints` are opinionated defaults from this style of trip — retune them when you claim the starter.
+The repo root is an **empty Japan trip scaffold**. A fleshed sample lives under `examples/japan-summer-2026/` — read it for patterns; copy into the root only when the traveler wants that starting point. Checks fail until `STARTER.md` is gone and `starter` in `trip.yaml` is false. `hard_constraints` are opinionated Japan defaults — retune them when you claim the starter.
+
 
 ## Method
 

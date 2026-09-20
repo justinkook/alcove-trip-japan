@@ -1,0 +1,13 @@
+schema_version: 1
+id: tokyo-hotel-2
+type: lodging
+provider: Tokyo hotel
+status: confirmed
+start: "2026-08-27T18:00:00+09:00"
+end: "2026-08-28T11:00:00+09:00"
+location: {name: Tokyo}
+exclusive: true
+cost: {amount: 200, currency: USD, commitment: committed}
+refundable: null
+cancellation_deadline: null
+external_ref: null
