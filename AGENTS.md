@@ -83,6 +83,7 @@ Alcove adversarially reviews PRs. Soft concerns land as unresolved review thread
 | Concern | Unresolved PR review thread |
 | Existing evidence | `research` Issue (`/research` template) |
 | New evidence | `experiment` Issue (`/experiment` template) |
+| Keep the risk | `/accept-risk` on the PR (Alcove refreshes `decision-review`; reviewer still owns thread resolution) |
 | Concrete change | Pull request |
 
 Rules:
@@ -91,6 +92,26 @@ Rules:
 - Only the **Alcove reviewer** resolves the parent PR thread — when the assumption is handled or the risk is accepted. Opening or closing a research/experiment Issue does not clear the thread.
 - `/research` and `/experiment` keep the parent thread **unresolved** until the reviewer re-evaluates.
 - Never auto-merge. Never mutate `main` directly.
-- Link the parent PR or review thread on every research/experiment Issue. Link those Issues from the PR when the change depends on them.
+- Link the parent PR or review thread on research/experiment Issues that answer a review thread. Parent link is optional for planning-first evidence. Link those Issues from the PR when the change depends on them.
+- Do **not** open an Issue for every chat question. Issues are for durable evidence; everyday Q&A stays in the agent client.
+
+## Reality watch (client-scheduled)
+
+Alcove does **not** run a hosted reality-watch cron for MVP. Travelers already live in agent clients — use **that client's** recurring/scheduled capability when you want external reality re-checked over time.
+
+Examples (pick what your client supports):
+
+- **ChatGPT** — scheduled tasks
+- **Claude** — scheduled / recurring tasks or reminders where available
+- **Cursor** — cloud agents, Automations, or a recurring `/loop`-style run you set up
+
+Pattern for any of them:
+
+1. Schedule a narrow check (hours, fare band, weather window, cancellation deadline) — not a full replan.
+2. Prefer the client's browser use or built-in connectors when sites block plain fetch.
+3. If something **material** changed, open a **pull request** (or a research/experiment Issue if you need evidence first). Never edit `main` from the schedule.
+4. Chat agreement is not the record. The PR / Issue is.
+
+Booking stays with the traveler or the client's browser use. Do not treat Alcove or this repo as an auto-booker.
 
 Label vocabulary: see `.github/LABELS.md`. Branch protection for forks: see `docs/branch-protection.md`.
