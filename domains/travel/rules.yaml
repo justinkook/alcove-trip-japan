@@ -1,17 +1,5 @@
 schema_version: 1
 rules:
-  - id: claim-the-trip
-    type: forbidden_value
-    document: trip
-    field: starter
-    equals: true
-    message: This is still an unclaimed Japan trip starter. Replace party ids and records for your journey, delete STARTER.md, set starter to false.
-
-  - id: remove-starter-note
-    type: path_present
-    path: STARTER.md
-    message: Delete STARTER.md after you claim this starter as your trip.
-
   - id: trip-dates
     type: field_order
     document: trip

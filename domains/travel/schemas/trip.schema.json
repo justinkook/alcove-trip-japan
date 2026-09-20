@@ -2,11 +2,10 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "type": "object",
   "additionalProperties": false,
-  "required": ["schema_version", "id", "starter", "title", "status", "timezone", "dates", "traveler_ids", "hard_constraints", "must_haves"],
+  "required": ["schema_version", "id", "title", "status", "timezone", "dates", "traveler_ids", "hard_constraints", "must_haves"],
   "properties": {
     "schema_version": {"const": 1},
     "id": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"},
-    "starter": {"type": "boolean"},
     "title": {"type": "string", "minLength": 1},
     "status": {"enum": ["planning", "booked", "traveling", "completed", "archived"]},
     "timezone": {"type": "string"},

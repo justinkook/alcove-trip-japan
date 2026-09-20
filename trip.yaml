@@ -1,6 +1,5 @@
 schema_version: 1
 id: my-japan-trip
-starter: true
 title: My Japan trip
 status: planning
 timezone: Asia/Tokyo
@@ -11,7 +10,7 @@ traveler_ids: [traveler-a]
 route:
   - {base: tokyo, nights: 7}
 hard_constraints:
-  # Opinionated Japan defaults. Change them when you claim the starter.
+  # Opinionated Japan defaults. Retune for your trip.
   minimum_sleep_hours: 6
   rolling_sleep_window_nights: 3
   rolling_sleep_average_min_hours: 7

@@ -15,11 +15,8 @@ EXAMPLE = ROOT / "examples" / "japan-summer-2026"
 
 
 class ScaffoldRepoTests(unittest.TestCase):
-    def test_scaffold_fails_claim_gates(self) -> None:
-        loaded = load_repo(ROOT)
-        codes = {item.code for item in evaluate(loaded)}
-        self.assertIn("claim-the-trip", codes)
-        self.assertIn("remove-starter-note", codes)
+    def test_scaffold_passes_hard_checks(self) -> None:
+        self.assertEqual(check_main(["--root", str(ROOT)]), 0)
 
     def test_engine_has_no_travel_words(self) -> None:
         banned = ("trip", "booking", "itinerary", "traveler", "kimono", "sleep")
@@ -36,10 +33,11 @@ class ExampleRepoTests(unittest.TestCase):
         self.assertIn(("clock_before", "itinerary/fushimi-early.yaml"), kinds)
         self.assertIn(("boolean_true", "itinerary/kyoto-kimono.yaml"), kinds)
 
-    def test_example_is_claimed(self) -> None:
-        codes = {item.code for item in evaluate(load_repo(EXAMPLE, ROOT / "domains"))}
-        self.assertNotIn("claim-the-trip", codes)
-        self.assertNotIn("remove-starter-note", codes)
+    def test_example_passes_hard_checks(self) -> None:
+        self.assertEqual(
+            check_main(["--root", str(EXAMPLE), "--domain-root", str(ROOT / "domains")]),
+            0,
+        )
 
 
 class CleanRepoTests(unittest.TestCase):
@@ -64,7 +62,6 @@ class CleanRepoTests(unittest.TestCase):
 
         shutil.copy2(ROOT / "trip.yaml", self.root / "trip.yaml")
         shutil.copy2(ROOT / "budget.yaml", self.root / "budget.yaml")
-        (self.root / "STARTER.md").unlink(missing_ok=True)
         for path in (self.root / "itinerary").glob("*.yaml"):
             path.unlink()
         for path in (self.root / "bookings").glob("*.yaml"):
@@ -75,7 +72,6 @@ class CleanRepoTests(unittest.TestCase):
         (self.root / "trip.yaml").write_text(
             """schema_version: 1
 id: demo-trip
-starter: false
 title: Demo trip
 status: planning
 timezone: UTC

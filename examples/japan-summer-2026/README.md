@@ -13,11 +13,10 @@ python3 -m engine.facts --root examples/japan-summer-2026 --domain-root domains
 python3 -m engine.check --root examples/japan-summer-2026 --domain-root domains
 ```
 
-(`starter` is already false here so claim-gate rules do not fire.)
+This folder is sample plan data only — copy into the repo root to use it.
 
 ## Use it in your fork
 
 1. Copy `trip.yaml`, `budget.yaml`, and the `itinerary/`, `bookings/`, `dependencies/` trees into the repo root (overwrite the empty scaffold).
 2. Edit for your dates and party.
-3. Delete root `STARTER.md` and keep `starter: false` once it is yours.
-4. Open PRs for changes — never treat chat agreement as the record.
+3. Open PRs for changes — never treat chat agreement as the record.

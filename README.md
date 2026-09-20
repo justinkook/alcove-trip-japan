@@ -1,6 +1,8 @@
 # Alcove trip starter — Japan
 
-Empty Japan trip scaffold for GitHub-first planning. Fork it, claim it, plan via ChatGPT / Claude / Cursor. A fleshed **example** itinerary lives under [`examples/japan-summer-2026/`](examples/japan-summer-2026/) — open that folder (or run checks against it) to see a complete sample; do not treat it as your `main`.
+Empty Japan trip scaffold for GitHub-first planning. Fork it, fill it in, plan via ChatGPT / Claude / Cursor. CI on `main` stays green for the empty scaffold.
+
+A fleshed **example** itinerary lives under [`examples/japan-summer-2026/`](examples/japan-summer-2026/) — open that folder (or run checks against it) to see a complete sample. Copy what you want into the repo root; do not treat the example as your accepted trip.
 
 ```bash
 python3 -m pip install -r requirements.txt
@@ -9,7 +11,7 @@ python3 -m engine.facts
 python3 -m engine.check
 ```
 
-`engine.facts` always prints. `engine.check` fails on this unclaimed scaffold on purpose (delete `STARTER.md`, set `starter: false`, replace placeholders).
+`engine.facts` always prints. `engine.check` should pass on this empty scaffold. It fails when the plan is internally impossible (schema, times, configured hard limits, secret/PII shapes).
 
 To inspect the example:
 
@@ -17,6 +19,13 @@ To inspect the example:
 python3 -m engine.facts --root examples/japan-summer-2026 --domain-root domains
 python3 -m engine.check --root examples/japan-summer-2026 --domain-root domains
 ```
+
+## Make it yours
+
+1. Replace `traveler_ids`, dates, and title in `trip.yaml`.
+2. Add nodes under `itinerary/`, `bookings/`, `dependencies/` (or copy from the example).
+3. Retune `hard_constraints` if the Japan defaults do not fit.
+4. Open PRs for changes — chat is not the record.
 
 Cursor, Claude, and ChatGPT should follow `AGENTS.md`.
 

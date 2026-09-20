@@ -1,6 +1,5 @@
 schema_version: 1
 id: japan-summer-2026
-starter: false
 title: Japan summer 2026 (example)
 status: completed
 timezone: Asia/Tokyo
