@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import re
 import sys
 from typing import Any
 
@@ -209,6 +210,46 @@ def eval_forbidden_keys(loaded: Loaded, rule: dict[str, Any]) -> list[Failure]:
         _walk_keys(data, path, banned, hits)
         for hit in hits:
             failures.append(Failure(rule["id"], path, f"forbidden key {hit}"))
+    return failures
+
+
+def _walk_strings(value: Any, pointer: str, out: list[tuple[str, str]]) -> None:
+    if isinstance(value, dict):
+        for key, child in value.items():
+            _walk_strings(child, f"{pointer}/{key}", out)
+    elif isinstance(value, list):
+        for index, child in enumerate(value):
+            _walk_strings(child, f"{pointer}/{index}", out)
+    elif isinstance(value, str) and value:
+        out.append((pointer, value))
+
+
+def eval_forbidden_patterns(loaded: Loaded, rule: dict[str, Any]) -> list[Failure]:
+    """Scan all string values for configured regexes (PII / secret shapes). Patterns live in the pack."""
+    compiled: list[tuple[str, re.Pattern[str]]] = []
+    for item in rule.get("patterns") or []:
+        name = str(item["id"])
+        flags = re.IGNORECASE if item.get("ignore_case", True) else 0
+        compiled.append((name, re.compile(str(item["regex"]), flags)))
+
+    failures: list[Failure] = []
+    blobs: list[tuple[str, Any]] = [(doc.path, doc.data) for doc in loaded.documents.values()]
+    for group in loaded.records.values():
+        blobs.extend((record.path, record.data) for record in group)
+    for path, data in blobs:
+        strings: list[tuple[str, str]] = []
+        _walk_strings(data, path, strings)
+        for pointer, text in strings:
+            for name, pattern in compiled:
+                if pattern.search(text):
+                    failures.append(
+                        Failure(
+                            rule["id"],
+                            path,
+                            f"forbidden pattern {name} at {pointer}",
+                        )
+                    )
+                    break
     return failures
 
 
@@ -448,6 +489,7 @@ EVALUATORS = {
     "refs_resolve": eval_refs_resolve,
     "bounded_sum": eval_bounded_sum,
     "forbidden_keys": eval_forbidden_keys,
+    "forbidden_patterns": eval_forbidden_patterns,
     "required_when": eval_required_when,
     "status_gate": eval_status_gate,
     "forbidden_value": eval_forbidden_value,

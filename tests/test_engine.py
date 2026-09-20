@@ -153,6 +153,20 @@ external_ref: null
     def test_claimed_trip_passes(self) -> None:
         self.assertEqual(check_main(["--root", str(self.root)]), 0)
 
+    def test_forbidden_key_passport_fails(self) -> None:
+        path = self.root / "bookings" / "city-hotel.yaml"
+        text = path.read_text(encoding="utf-8")
+        path.write_text(text + "passport_number: X1234567\n", encoding="utf-8")
+        codes = {item.code for item in evaluate(load_repo(self.root))}
+        self.assertIn("secrets", codes)
+
+    def test_email_value_fails_secret_patterns(self) -> None:
+        path = self.root / "itinerary" / "city-stay.yaml"
+        text = path.read_text(encoding="utf-8")
+        path.write_text(text + "notes: contact traveler@example.com before check-in\n", encoding="utf-8")
+        codes = {item.code for item in evaluate(load_repo(self.root))}
+        self.assertIn("secret-patterns", codes)
+
 
 if __name__ == "__main__":
     unittest.main()

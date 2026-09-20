@@ -14,5 +14,5 @@ Link Issues opened for unresolved Alcove review threads. Do not mark those threa
 ## Before merge
 
 - [ ] Sample starter content is gone if this fork is no longer the example.
-- [ ] No passwords, passport numbers, confirmation codes, or card data.
+- [ ] No passwords, passport numbers, confirmation codes, card data, emails, or phone numbers in repo files (Alcove subjects hold traveler PII).
 - [ ] Linked research/experiment Issues if this PR answers a review concern.

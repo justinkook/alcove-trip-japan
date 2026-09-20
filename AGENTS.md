@@ -68,7 +68,9 @@ The traveler decides. The decision and the state it changes land in the same com
 
 ## Hard checks are not this method
 
-Deterministic checks may reject impossible states: broken schema, impossible times, a configured hard limit, a missing required link. They must not encode taste. Walking distance and weather sensitivity are facts unless a hard limit is set. The sample budget has no hard cap on purpose: a planning total is not a failure.
+Deterministic checks may reject impossible states: broken schema, impossible times, a configured hard limit, a missing required link, **or secret/PII shapes in repo files** (emails, phones, card-like numbers, passport keys). They must not encode taste. Walking distance and weather sensitivity are facts unless a hard limit is set. The sample budget has no hard cap on purpose: a planning total is not a failure.
+
+**Do not commit identity or payment secrets.** Put traveler emails, phones, passport details, and similar in Alcove subject memory (opaque `traveler_ids` in this repo only). Confirmation *ids* that are not secrets may live as `external_ref`; full confirmation codes and card data must not.
 
 If you are changing code under `engine/`, do not add trip words there. Field names live in `domains/travel/`.
 
