@@ -97,11 +97,16 @@ Rules:
 - Link the parent PR or review thread on research/experiment Issues that answer a review thread. Parent link is optional for planning-first evidence. Link those Issues from the PR when the change depends on them.
 - Do **not** open an Issue for every chat question. Issues are for durable evidence; everyday Q&A stays in the agent client.
 
-## Reality watch (client-scheduled)
+## Watch (hosted + client-scheduled)
 
-Alcove does **not** run a hosted reality-watch cron for MVP. Travelers already live in agent clients — use **that client's** recurring/scheduled capability when you want external reality re-checked over time.
+Two valid paths — pick one or both:
 
-Examples (pick what your client supports):
+1. **Hosted Alcove watch (Pro)** — enable on a linked repo from the dashboard or MCP (`enable_watch`). Alcove runs a Trigger cron, reads optional root `watch.yaml`, and opens/updates a standing Issue titled **Alcove watch** (labels `watch` + `research`). Never mutates `main`.
+2. **Client-scheduled** — use your agent client's recurring capability when you live in that client day-to-day.
+
+Optional `watch.yaml` is the **automation config** for this repo: required `schema_version: 1` when the file exists, then generic kinds (`weather` / `infer` / `research`) plus `prompt`, `locations`, and thresholds. Alcove only toggles enablement + cadence. Delete the file or use `checks: []` until you want targets. Do not invent fields — CI validates against `domains/travel/schemas/watch.schema.json`.
+
+Examples of client schedules (pick what your client supports):
 
 - **ChatGPT** — scheduled tasks
 - **Claude** — scheduled / recurring tasks or reminders where available
@@ -109,7 +114,7 @@ Examples (pick what your client supports):
 
 Pattern for any of them:
 
-1. Schedule a narrow check (hours, fare band, weather window, cancellation deadline) — not a full replan.
+1. Schedule a narrow check — not a full replan.
 2. Prefer the client's browser use or built-in connectors when sites block plain fetch.
 3. If something **material** changed, open a **pull request** (or a research/experiment Issue if you need evidence first). Never edit `main` from the schedule.
 4. Chat agreement is not the record. The PR / Issue is.

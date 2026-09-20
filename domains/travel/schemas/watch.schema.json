@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "checks"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "checks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "kind"],
+        "properties": {
+          "id": {"type": "string", "minLength": 1, "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"},
+          "kind": {"enum": ["weather", "infer", "research"]},
+          "prompt": {"type": "string", "minLength": 1},
+          "note": {"type": "string", "minLength": 1},
+          "timezone": {"type": "string", "minLength": 1},
+          "precip_mm_min": {"type": "number"},
+          "cloud_cover_max": {"type": "number"},
+          "locations": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["label", "lat", "lon"],
+              "properties": {
+                "label": {"type": "string", "minLength": 1},
+                "lat": {"type": "number"},
+                "lon": {"type": "number"}
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

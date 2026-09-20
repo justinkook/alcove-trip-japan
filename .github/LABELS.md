@@ -8,9 +8,10 @@ Small label set for this trip repo. Create these in GitHub Settings → Labels (
 | --- | --- |
 | `research` | Retrieving existing evidence (sources, docs, prior facts). |
 | `experiment` | Generating new evidence via a dry-run. Does not mutate `main`. |
+| `watch` | Standing hosted-watch run log (usually paired with `research`). Prefer updating one open Issue over opening a new one each quiet day. |
 | `risk` | Optional later — accepted or tracked residual risk; not required for MVP. |
 
-An Issue is either research or experiment, not both.
+An Issue is either research or experiment for slash-command evidence work — not both. Hosted watch Issues may carry `watch` + `research` together.
 
 ## Workflow
 

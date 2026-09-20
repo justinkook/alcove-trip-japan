@@ -133,6 +133,8 @@ def load_repo(root: Path, domain_root: Path | None = None) -> Loaded:
         relative = str(spec["path"])
         path = root / relative
         if not path.is_file():
+            if spec.get("optional"):
+                continue
             failures.append(Failure("file", relative, "missing document"))
             continue
         data, error = load_yaml(path)

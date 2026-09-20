@@ -33,6 +33,11 @@ Cursor, Claude, and ChatGPT should follow `AGENTS.md`.
 
 Install the Alcove GitHub App on the fork for adversarial PR review. Soft findings stay as unresolved conversation threads; the App's `decision-review` status check runs alongside the deterministic `check` workflow. Protect `main` as described in [`docs/branch-protection.md`](docs/branch-protection.md). Evidence for open concerns goes in Research / Experiment Issues (see `.github/ISSUE_TEMPLATE/` and `.github/LABELS.md`) — never auto-merge, never edit `main` directly.
 
-## Reality watch (no Alcove cron)
+## Watch (hosted + client-scheduled)
 
-Want fares, hours, or deadlines re-checked over time? Use a **scheduled / recurring task in your agent client** (ChatGPT, Claude, Cursor, or similar) — not an Alcove background job. If something material changes, have the agent open a PR (or a research/experiment Issue). Never edit `main` from the schedule. Booking stays in the client (browser use / connectors) or with you; this repo only records the accepted plan. Details live in [`AGENTS.md`](AGENTS.md).
+Want Fuji visibility, weather, or deadlines re-checked over time?
+
+- **Hosted (Pro)** — enable watch on the linked repo in Alcove (dashboard or MCP). Optional root [`watch.yaml`](watch.yaml) lists narrow checks (`schema_version: 1` required when the file exists); Alcove updates a standing **Alcove watch** Issue (never edits `main`). CI validates the file via `domains/travel/schemas/watch.schema.json`.
+- **Client-scheduled** — a recurring task in ChatGPT / Claude / Cursor (or similar) remains fully valid.
+
+If something material changes, open a PR (or a research/experiment Issue). Booking stays in the client or with you. Details: [`AGENTS.md`](AGENTS.md).

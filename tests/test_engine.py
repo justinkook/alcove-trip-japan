@@ -171,6 +171,26 @@ external_ref: null
         codes = {item.code for item in evaluate(load_repo(self.root))}
         self.assertIn("secret-patterns", codes)
 
+    def test_missing_watch_yaml_is_optional(self) -> None:
+        watch = self.root / "watch.yaml"
+        if watch.exists():
+            watch.unlink()
+        failures = load_repo(self.root).failures
+        self.assertFalse(any(f.path == "watch.yaml" for f in failures))
+
+    def test_invalid_watch_schema_fails(self) -> None:
+        (self.root / "watch.yaml").write_text(
+            """schema_version: 1
+checks:
+  - id: bad
+    kind: not-a-tool
+""",
+            encoding="utf-8",
+        )
+        failures = [f for f in load_repo(self.root).failures if f.path == "watch.yaml"]
+        self.assertTrue(failures)
+        self.assertTrue(any(f.code == "schema" for f in failures))
+
 
 if __name__ == "__main__":
     unittest.main()
