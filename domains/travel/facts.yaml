@@ -1,0 +1,29 @@
+schema_version: 1
+facts:
+  - id: early-start
+    type: clock_before
+    record: node
+    field: start
+    bound_from: documents.trip.assumptions.normal_departure_local
+
+  - id: weather-sensitive
+    type: boolean_true
+    record: node
+    field: weather_sensitive
+
+  - id: walking-without-cap
+    type: number_without_bound
+    record: node
+    field: walking_km
+    bound_from: documents.trip.hard_constraints.maximum_walking_km
+
+  - id: open-dependency
+    type: status_is
+    record: dependency
+    field: status
+    equals: open
+
+  - id: dense-day
+    type: project
+    record: node
+    fields: [id, day, kind, independent_anchor, walking_km]

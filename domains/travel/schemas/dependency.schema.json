@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "id", "status", "required_by"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "id": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"},
+    "status": {"enum": ["open", "satisfied", "waived"]},
+    "kind": {"type": "string"},
+    "required_by": {"type": "string"},
+    "requires": {"type": ["string", "null"]},
+    "waived_reason": {"type": ["string", "null"]}
+  }
+}

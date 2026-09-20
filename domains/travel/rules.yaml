@@ -1,0 +1,189 @@
+schema_version: 1
+rules:
+  - id: claim-the-trip
+    type: forbidden_value
+    document: trip
+    field: starter
+    equals: true
+    message: This is still the Japan summer 2026 starter. Replace party ids and records for your journey, delete STARTER.md, set starter to false.
+
+  - id: remove-starter-note
+    type: path_present
+    path: STARTER.md
+    message: Delete STARTER.md after you claim this starter as your trip.
+
+  - id: trip-dates
+    type: field_order
+    document: trip
+    earlier: dates.start
+    later: dates.end
+
+  - id: node-chrono
+    type: field_order
+    record: node
+    earlier: start
+    later: end
+
+  - id: booking-chrono
+    type: field_order
+    record: booking
+    earlier: start
+    later: end
+
+  - id: booking-overlap
+    type: interval_overlap
+    record: booking
+    start: start
+    end: end
+    exclusive_field: exclusive
+    status_field: status
+    status_in: [hold, confirmed]
+
+  - id: node-overlap
+    type: interval_overlap
+    record: node
+    start: start
+    end: end
+    exclusive_field: exclusive
+    status_field: status
+    status_in: [committed]
+
+  - id: sleep-floor
+    type: number_compare
+    record: node
+    field: sleep_hours
+    op: gte
+    bound_from: documents.trip.hard_constraints.minimum_sleep_hours
+    when:
+      field: kind
+      equals: lodging
+
+  - id: rolling-sleep
+    type: rolling_average
+    record: node
+    field: sleep_hours
+    order_by: start
+    window_from: documents.trip.hard_constraints.rolling_sleep_window_nights
+    min_from: documents.trip.hard_constraints.rolling_sleep_average_min_hours
+    when:
+      field: kind
+      equals: lodging
+
+  - id: early-run
+    type: consecutive_clock_before
+    record: node
+    field: start
+    bound_from: documents.trip.hard_constraints.early_morning_before
+    max_from: documents.trip.hard_constraints.consecutive_early_mornings_max
+    when:
+      field: independent_anchor
+      equals: true
+
+  - id: meal-gap
+    type: gap_within_group
+    record: node
+    group_by: day
+    field: start
+    max_from: documents.trip.hard_constraints.meal_gap_hours_max
+    when:
+      field: kind
+      equals: meal
+
+  - id: transfer-margin
+    type: number_compare
+    record: node
+    field: margin_minutes
+    op: gte
+    bound_from: documents.trip.hard_constraints.minimum_transfer_margin_minutes
+    when:
+      field: hard_connection
+      equals: true
+
+  - id: walking-cap
+    type: number_compare
+    record: node
+    field: walking_km
+    op: lte
+    bound_from: documents.trip.hard_constraints.maximum_walking_km
+
+  - id: anchor-density
+    type: count_per_group
+    record: node
+    group_by: day
+    max_from: documents.trip.hard_constraints.maximum_independent_anchors_per_day
+    when:
+      field: independent_anchor
+      equals: true
+
+  - id: photo-prep
+    type: pair_compare
+    record: node
+    left: scheduled_prep_minutes
+    right: required_prep_minutes
+    op: gte
+    when:
+      field: weather_sensitive
+      equals: true
+
+  - id: weather-spend
+    type: threshold_required
+    record: node
+    when:
+      field: weather_sensitive
+      equals: true
+    amount_field: nonrefundable_spend
+    threshold_from: documents.trip.hard_constraints.weather_sensitive_spend_max
+    require_field: fallback_plan
+    utility_field: fallback_utility
+    utility_min_from: documents.trip.hard_constraints.weather_fallback_utility_min
+
+  - id: must-have
+    type: refs_resolve
+    document: trip
+    each: must_haves
+    ref_field: implemented_by
+    require_non_empty: true
+
+  - id: open-dependency
+    type: status_gate
+    record: dependency
+    status_field: status
+    fail_when_status_in: [open]
+    target_field: required_by
+    target_status_in:
+      booking: [hold, confirmed]
+      node: [committed]
+
+  - id: committed-cost
+    type: required_when
+    record: booking
+    when:
+      field: cost.commitment
+      in: [committed, paid]
+    require_field: cost.amount
+
+  - id: waiver
+    type: required_when
+    record: dependency
+    when:
+      field: status
+      equals: waived
+    require_field: waived_reason
+
+  - id: committed-spend
+    type: bounded_sum
+    record: booking
+    amount_field: cost.amount
+    unit_field: cost.currency
+    include_when:
+      - field: cost.commitment
+        in: [committed, paid]
+      - field: status
+        not_in: [canceled]
+    cap_document: budget
+    cap_field: hard_cap
+    unit_document_field: currency
+
+  - id: secrets
+    type: forbidden_keys
+    keys: [password, passport, passport_number, confirmation_code, card_number, cvv, api_token, api_key, secret, ssn]

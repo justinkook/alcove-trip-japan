@@ -1,0 +1,13 @@
+schema_version: 1
+id: hakone-ryokan
+type: lodging
+provider: Hakone ryokan
+status: confirmed
+start: "2026-08-22T15:00:00+09:00"
+end: "2026-08-23T10:00:00+09:00"
+location: {name: Hakone}
+exclusive: true
+cost: {amount: 800, currency: USD, commitment: committed}
+refundable: null
+cancellation_deadline: null
+external_ref: null

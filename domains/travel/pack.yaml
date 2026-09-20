@@ -1,0 +1,30 @@
+schema_version: 1
+id: travel
+documents:
+  - id: trip
+    path: trip.yaml
+    schema: schemas/trip.schema.json
+  - id: budget
+    path: budget.yaml
+    schema: schemas/budget.schema.json
+records:
+  - id: node
+    glob: itinerary/*.yaml
+    schema: schemas/node.schema.json
+    filename_is_id: true
+  - id: booking
+    glob: bookings/*.yaml
+    schema: schemas/booking.schema.json
+    filename_is_id: true
+  - id: dependency
+    glob: dependencies/*.yaml
+    schema: schemas/dependency.schema.json
+    filename_is_id: true
+  - id: evidence
+    glob: evidence/*.yaml
+    schema: schemas/evidence.schema.json
+    filename_is_id: true
+  - id: actual
+    glob: actuals/*.yaml
+    schema: schemas/actual.schema.json
+    filename_is_id: true

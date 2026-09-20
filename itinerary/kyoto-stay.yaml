@@ -1,0 +1,13 @@
+schema_version: 1
+id: kyoto-stay
+title: Kyoto hotel (nights 6–9)
+kind: lodging
+status: committed
+day: "2026-08-23"
+start: "2026-08-23T15:30:00+09:00"
+end: "2026-08-27T11:00:00+09:00"
+timezone: Asia/Tokyo
+location: {name: Kyoto}
+exclusive: true
+sleep_hours: 8
+booking_ids: [kyoto-hotel]

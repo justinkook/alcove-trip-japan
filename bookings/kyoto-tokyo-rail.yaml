@@ -1,0 +1,13 @@
+schema_version: 1
+id: kyoto-tokyo-rail
+type: transport
+provider: Shinkansen
+status: confirmed
+start: "2026-08-27T15:00:00+09:00"
+end: "2026-08-27T17:30:00+09:00"
+location: {name: Kyoto to Tokyo}
+exclusive: false
+cost: {amount: 140, currency: USD, commitment: committed}
+refundable: null
+cancellation_deadline: null
+external_ref: null

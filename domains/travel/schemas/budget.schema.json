@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "currency", "hard_cap"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "currency": {"type": "string", "pattern": "^[A-Z]{3}$"},
+    "total": {"type": ["number", "null"]},
+    "reserve": {"type": ["number", "null"]},
+    "hard_cap": {"type": ["number", "null"]},
+    "categories": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "label", "amount"],
+        "properties": {
+          "id": {"type": "string"},
+          "label": {"type": "string"},
+          "amount": {"type": ["number", "null"]}
+        }
+      }
+    }
+  }
+}

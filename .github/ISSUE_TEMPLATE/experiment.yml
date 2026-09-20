@@ -1,0 +1,59 @@
+name: Experiment
+description: Generate new evidence (dry-run) for an open review concern
+title: "[experiment] "
+labels: ["experiment", "proposed"]
+body:
+  - type: input
+    id: parent
+    attributes:
+      label: Parent PR / review thread
+      description: Link to the pull request or unresolved review thread this experiment answers.
+      placeholder: https://github.com/OWNER/REPO/pull/N#discussion_r…
+    validations:
+      required: true
+  - type: textarea
+    id: hypothesis
+    attributes:
+      label: Hypothesis
+      description: What you expect to learn, and which requirement or assumption it tests.
+      placeholder: A 07:00 Fushimi start is realistic for this party on a transfer day.
+    validations:
+      required: true
+  - type: textarea
+    id: method
+    attributes:
+      label: Method
+      description: How you will generate evidence without mutating the accepted trip (`main`). Dry-run only.
+      placeholder: |
+        Simulate transit + wake time against usual departure.
+        Do not edit main; report here only.
+    validations:
+      required: true
+  - type: textarea
+    id: observation
+    attributes:
+      label: Observation
+      description: What actually happened or was measured. Label claims (verified, inferred, unknown).
+      placeholder: Fill during/after the dry-run.
+    validations:
+      required: false
+  - type: textarea
+    id: conclusion
+    attributes:
+      label: Conclusion
+      description: Fill when done. Does the hypothesis hold? What should the parent PR do next?
+      placeholder: Hold / drop / replace — one sentence plus evidence pointer.
+    validations:
+      required: false
+  - type: dropdown
+    id: status
+    attributes:
+      label: Status
+      description: Workflow label should match. Move to `in-progress` / `resolved` as you work.
+      options:
+        - proposed
+        - in-progress
+        - resolved
+      default: 0
+    validations:
+      required: true

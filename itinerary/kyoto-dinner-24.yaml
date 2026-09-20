@@ -1,0 +1,11 @@
+schema_version: 1
+id: kyoto-dinner-24
+title: Dinner
+kind: meal
+status: proposed
+day: "2026-08-24"
+start: "2026-08-24T19:00:00+09:00"
+end: "2026-08-24T20:30:00+09:00"
+timezone: Asia/Tokyo
+location: {name: Kyoto}
+exclusive: false

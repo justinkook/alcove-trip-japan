@@ -1,0 +1,85 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "id", "starter", "title", "status", "timezone", "dates", "traveler_ids", "hard_constraints", "must_haves"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "id": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"},
+    "starter": {"type": "boolean"},
+    "title": {"type": "string", "minLength": 1},
+    "status": {"enum": ["planning", "booked", "traveling", "completed", "archived"]},
+    "timezone": {"type": "string"},
+    "dates": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["start", "end"],
+      "properties": {
+        "start": {"type": ["string", "null"]},
+        "end": {"type": ["string", "null"]}
+      }
+    },
+    "traveler_ids": {"type": "array", "items": {"type": "string"}},
+    "route": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["base", "nights"],
+        "properties": {
+          "base": {"type": "string"},
+          "nights": {"type": "integer"}
+        }
+      }
+    },
+    "hard_constraints": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "minimum_sleep_hours",
+        "rolling_sleep_window_nights",
+        "rolling_sleep_average_min_hours",
+        "early_morning_before",
+        "consecutive_early_mornings_max",
+        "meal_gap_hours_max",
+        "minimum_transfer_margin_minutes",
+        "maximum_walking_km",
+        "maximum_independent_anchors_per_day",
+        "weather_sensitive_spend_max",
+        "weather_fallback_utility_min"
+      ],
+      "properties": {
+        "minimum_sleep_hours": {"type": ["number", "null"]},
+        "rolling_sleep_window_nights": {"type": ["integer", "null"]},
+        "rolling_sleep_average_min_hours": {"type": ["number", "null"]},
+        "early_morning_before": {"type": ["string", "null"]},
+        "consecutive_early_mornings_max": {"type": ["integer", "null"]},
+        "meal_gap_hours_max": {"type": ["number", "null"]},
+        "minimum_transfer_margin_minutes": {"type": ["number", "null"]},
+        "maximum_walking_km": {"type": ["number", "null"]},
+        "maximum_independent_anchors_per_day": {"type": ["integer", "null"]},
+        "weather_sensitive_spend_max": {"type": ["number", "null"]},
+        "weather_fallback_utility_min": {"type": ["number", "null"]}
+      }
+    },
+    "must_haves": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "implemented_by"],
+        "properties": {
+          "id": {"type": "string"},
+          "implemented_by": {"type": "array", "items": {"type": "string"}}
+        }
+      }
+    },
+    "assumptions": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "normal_departure_local": {"type": ["string", "null"]}
+      }
+    }
+  }
+}

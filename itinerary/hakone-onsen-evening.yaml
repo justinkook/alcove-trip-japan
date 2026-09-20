@@ -1,0 +1,13 @@
+schema_version: 1
+id: hakone-onsen-evening
+title: Ryokan dinner and onsen
+kind: container
+status: proposed
+day: "2026-08-22"
+start: "2026-08-22T17:00:00+09:00"
+end: "2026-08-22T21:00:00+09:00"
+timezone: Asia/Tokyo
+location: {name: Hakone}
+exclusive: false
+independent_anchor: true
+notes: The ryokan is the evening. Do not stack a second hard commitment.

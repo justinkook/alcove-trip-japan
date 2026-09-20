@@ -1,0 +1,14 @@
+schema_version: 1
+id: depart-tokyo
+title: Depart Tokyo
+kind: transfer
+status: committed
+day: "2026-08-28"
+start: "2026-08-28T12:00:00+09:00"
+end: "2026-08-28T14:00:00+09:00"
+timezone: Asia/Tokyo
+location: {name: Tokyo}
+exclusive: false
+hard_connection: true
+margin_minutes: 90
+notes: Exact outbound flight outside this starter. Keep airport margin honest.

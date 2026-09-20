@@ -1,0 +1,20 @@
+schema_version: 1
+id: kyoto-kimono
+title: Outdoor kimono photographs
+kind: anchor
+status: proposed
+day: "2026-08-24"
+start: "2026-08-24T10:00:00+09:00"
+end: "2026-08-24T12:30:00+09:00"
+timezone: Asia/Tokyo
+location: {name: Kyoto}
+exclusive: false
+independent_anchor: true
+weather_sensitive: true
+required_prep_minutes: 75
+scheduled_prep_minutes: 90
+nonrefundable_spend: 275
+fallback_plan: Move portraits indoors or to covered temple corridors; keep rental window.
+fallback_utility: 0.55
+booking_ids: [kyoto-photographer]
+notes: August light at 10:00 is a review question, not a ban on outdoor photos.

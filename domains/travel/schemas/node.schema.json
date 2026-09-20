@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "id", "title", "kind", "status", "day"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "id": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"},
+    "title": {"type": "string", "minLength": 1},
+    "kind": {"enum": ["anchor", "transfer", "dwell", "meal", "lodging", "container"]},
+    "status": {"enum": ["proposed", "committed"]},
+    "day": {"type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"},
+    "start": {"type": ["string", "null"]},
+    "end": {"type": ["string", "null"]},
+    "timezone": {"type": ["string", "null"]},
+    "location": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name"],
+      "properties": {"name": {"type": "string"}}
+    },
+    "exclusive": {"type": "boolean"},
+    "independent_anchor": {"type": "boolean"},
+    "weather_sensitive": {"type": "boolean"},
+    "walking_km": {"type": ["number", "null"]},
+    "sleep_hours": {"type": ["number", "null"]},
+    "hard_connection": {"type": "boolean"},
+    "margin_minutes": {"type": ["number", "null"]},
+    "required_prep_minutes": {"type": ["number", "null"]},
+    "scheduled_prep_minutes": {"type": ["number", "null"]},
+    "nonrefundable_spend": {"type": ["number", "null"]},
+    "fallback_plan": {"type": ["string", "null"]},
+    "fallback_utility": {"type": ["number", "null"]},
+    "booking_ids": {"type": "array", "items": {"type": "string"}},
+    "depends_on": {"type": "array", "items": {"type": "string"}},
+    "evidence_ids": {"type": "array", "items": {"type": "string"}},
+    "notes": {"type": ["string", "null"]}
+  }
+}

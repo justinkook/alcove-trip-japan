@@ -1,0 +1,13 @@
+schema_version: 1
+id: tokyo-hakone-rail
+type: transport
+provider: Rail
+status: confirmed
+start: "2026-08-22T11:30:00+09:00"
+end: "2026-08-22T14:30:00+09:00"
+location: {name: Tokyo to Hakone}
+exclusive: false
+cost: {amount: 60, currency: USD, commitment: committed}
+refundable: null
+cancellation_deadline: null
+external_ref: null

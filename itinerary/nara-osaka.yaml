@@ -1,0 +1,16 @@
+schema_version: 1
+id: nara-osaka
+title: Nara to Dotonbori
+kind: container
+status: proposed
+day: "2026-08-26"
+start: "2026-08-26T09:30:00+09:00"
+end: "2026-08-26T22:00:00+09:00"
+timezone: Asia/Tokyo
+location: {name: Nara and Osaka}
+exclusive: false
+independent_anchor: true
+walking_km: 12
+weather_sensitive: false
+booking_ids: [nara-osaka-driver]
+notes: Dense day that works when transfers are reliable and each stop has internal exploration time.

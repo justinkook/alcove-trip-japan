@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "id", "provenance", "statement"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "id": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"},
+    "provenance": {"enum": ["verified", "connector-derived", "repo-derived", "user-reported", "inferred", "unknown"]},
+    "statement": {"type": "string", "minLength": 1},
+    "supports": {"type": "array", "items": {"type": "string"}},
+    "source": {"type": ["string", "null"]},
+    "observed_at": {"type": ["string", "null"]}
+  }
+}

@@ -1,0 +1,13 @@
+schema_version: 1
+id: kyoto-hotel
+type: lodging
+provider: Kyoto hotel
+status: confirmed
+start: "2026-08-23T15:30:00+09:00"
+end: "2026-08-27T11:00:00+09:00"
+location: {name: Kyoto}
+exclusive: true
+cost: {amount: 900, currency: USD, commitment: committed}
+refundable: null
+cancellation_deadline: null
+external_ref: null

@@ -1,0 +1,7 @@
+schema_version: 1
+id: teamlab-needs-timed-entry
+status: open
+kind: booking
+required_by: teamlab-tickets
+requires: null
+waived_reason: null
