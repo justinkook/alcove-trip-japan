@@ -3,3 +3,6 @@ contact_links:
   - name: Open a pull request instead
     url: ../../compare
     about: Concrete trip changes belong in a PR, not a blank issue. Use Research or Experiment for evidence only.
+  - name: Hosted watch Issues
+    url: https://github.com/justinkook/alcove-trip-japan/blob/main/AGENTS.md#watch-hosted--client-scheduled
+    about: Do not open these by hand. Alcove creates/updates the standing “Alcove watch” Issue when hosted watch is enabled (Pro).

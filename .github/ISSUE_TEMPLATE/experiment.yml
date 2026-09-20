@@ -3,6 +3,11 @@ description: Generate new evidence (dry-run) for an open review concern
 title: "[experiment] "
 labels: ["experiment", "proposed"]
 body:
+  - type: markdown
+    attributes:
+      value: |
+        Dry-run evidence only — never edit `main` from an experiment. **Keep the field titles below unchanged** — Alcove assist patches `### Observation`, `### Conclusion`, and `### Status` by those headings.
+        Closing this Issue does **not** clear the parent PR review thread; only the Alcove reviewer does.
   - type: input
     id: parent
     attributes:
@@ -33,7 +38,7 @@ body:
     id: observation
     attributes:
       label: Observation
-      description: What actually happened or was measured. Label claims (verified, inferred, unknown).
+      description: What actually happened or was measured. Label claims (verified, inferred, unknown). (Alcove-patched section — do not rename.)
       placeholder: Fill during/after the dry-run.
     validations:
       required: false
@@ -41,7 +46,7 @@ body:
     id: conclusion
     attributes:
       label: Conclusion
-      description: Fill when done. Does the hypothesis hold? What should the parent PR do next?
+      description: Fill when done. Does the hypothesis hold? What should the parent PR do next? (Alcove-patched section — do not rename.)
       placeholder: Hold / drop / replace — one sentence plus evidence pointer.
     validations:
       required: false
@@ -49,7 +54,7 @@ body:
     id: status
     attributes:
       label: Status
-      description: Workflow label should match. Move to `in-progress` / `resolved` as you work.
+      description: Workflow label should match. Move to `in-progress` / `resolved` as you work. (Alcove-patched section — do not rename.)
       options:
         - proposed
         - in-progress

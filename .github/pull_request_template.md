@@ -8,8 +8,9 @@
 
 - Research Issues (existing sources):
 - Experiment Issues (dry-runs):
+- Hosted watch Issue (if answering a watch finding):
 
-Link Issues opened for unresolved Alcove review threads. Do not mark those threads resolved yourself — the Alcove reviewer does after re-evaluation.
+Link Issues opened for unresolved Alcove review threads. Do not mark those threads resolved yourself — the Alcove reviewer does after re-evaluation. Do **not** hand-open a watch Issue — Alcove owns the standing **Alcove watch** Issue when hosted watch is on.
 
 ## Before merge
 

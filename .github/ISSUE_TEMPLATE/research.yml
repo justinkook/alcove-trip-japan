@@ -3,6 +3,11 @@ description: Retrieve existing evidence for an open review concern
 title: "[research] "
 labels: ["research", "proposed"]
 body:
+  - type: markdown
+    attributes:
+      value: |
+        Evidence Issue for agents and travelers. **Keep the field titles below unchanged** — Alcove assist patches `### Sources to check`, `### Conclusion`, and `### Status` by those headings.
+        Filling this Issue does **not** resolve the parent PR review thread; only the Alcove reviewer does after re-evaluation.
   - type: input
     id: parent
     attributes:
@@ -23,7 +28,7 @@ body:
     id: sources
     attributes:
       label: Sources to check
-      description: URLs, docs, or prior Issues to consult. Prefer primary sources.
+      description: URLs, docs, or prior Issues to consult. Prefer primary sources. (Alcove-patched section — do not rename.)
       placeholder: |
         - https://…
         - Prior issue #…
@@ -33,7 +38,7 @@ body:
     id: conclusion
     attributes:
       label: Conclusion
-      description: Fill when done. State what was found, with citations. Leave blank until research finishes.
+      description: Fill when done. State what was found, with citations. Leave blank until research finishes. (Alcove-patched section — do not rename.)
       placeholder: Verified / unknown — cite sources.
     validations:
       required: false
@@ -41,7 +46,7 @@ body:
     id: status
     attributes:
       label: Status
-      description: Workflow label should match. Move to `in-progress` / `resolved` as you work.
+      description: Workflow label should match. Move to `in-progress` / `resolved` as you work. (Alcove-patched section — do not rename.)
       options:
         - proposed
         - in-progress
