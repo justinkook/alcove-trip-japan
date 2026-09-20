@@ -13,7 +13,7 @@ route:
   - {base: kyoto, nights: 4}
   - {base: tokyo, nights: 1}
 hard_constraints:
-  # Opinionated Japan-summer defaults. Change them when you claim the starter.
+  # Opinionated Japan-summer defaults. Retune for your trip.
   minimum_sleep_hours: 6
   rolling_sleep_window_nights: 3
   rolling_sleep_average_min_hours: 7

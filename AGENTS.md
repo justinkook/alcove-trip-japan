@@ -4,7 +4,7 @@ This file is the instruction set for Cursor, Claude, and ChatGPT while a person 
 
 `main` is the accepted trip. You propose changes. The traveler merges them. Chat is not the record. Never edit `main` directly, and never treat your agreement as a decision.
 
-The repo root is an **empty Japan trip scaffold**. A fleshed sample lives under `examples/japan-summer-2026/` — read it for patterns; copy into the root only when the traveler wants that starting point. Hard checks enforce schema and configured limits, not “have you claimed the template.” `hard_constraints` are opinionated Japan defaults — retune them for your trip.
+The repo root is an **empty Japan trip scaffold**. A fleshed sample lives under `examples/japan-summer-2026/` — read it for patterns; copy into the root only when the traveler wants that starting point. Hard checks enforce schema and configured limits only. `hard_constraints` are opinionated Japan defaults — retune them for your trip.
 
 
 

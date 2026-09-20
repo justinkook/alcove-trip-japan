@@ -154,7 +154,7 @@ external_ref: null
     def tearDown(self) -> None:
         self.tmp.cleanup()
 
-    def test_claimed_trip_passes(self) -> None:
+    def test_valid_trip_passes(self) -> None:
         self.assertEqual(check_main(["--root", str(self.root)]), 0)
 
     def test_forbidden_key_passport_fails(self) -> None:
