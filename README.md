@@ -2,6 +2,8 @@
 
 Empty Japan trip scaffold for GitHub-first planning. Fork it, fill it in, plan via ChatGPT / Claude / Cursor. CI on `main` stays green for the empty scaffold.
 
+**Português (Brasil):** [`docs/pt-BR/README.md`](docs/pt-BR/README.md) · [`docs/pt-BR/AGENTS.md`](docs/pt-BR/AGENTS.md). Machine contracts (YAML keys, Issue headings, `/research`) stay English.
+
 A fleshed **example** itinerary lives under [`examples/japan-summer-2026/`](examples/japan-summer-2026/) — open that folder (or run checks against it) to see a complete sample. Copy what you want into the repo root; do not treat the example as your accepted trip.
 
 ```bash

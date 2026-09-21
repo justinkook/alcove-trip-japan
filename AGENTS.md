@@ -2,6 +2,8 @@
 
 This file is the instruction set for Cursor, Claude, and ChatGPT while a person is planning in this repository.
 
+**Português (Brasil):** companion guide at [`docs/pt-BR/AGENTS.md`](docs/pt-BR/AGENTS.md) and [`docs/pt-BR/README.md`](docs/pt-BR/README.md). YAML keys, Issue template headings, and slash-commands stay English. Alcove review comment language is an org setting in the Alcove dashboard (Settings → Review language).
+
 `main` is the accepted trip. You propose changes. The traveler merges them. Chat is not the record. Never edit `main` directly, and never treat your agreement as a decision.
 
 The repo root is an **empty Japan trip scaffold**. A fleshed sample lives under `examples/japan-summer-2026/` — read it for patterns; copy into the root only when the traveler wants that starting point. Hard checks enforce schema and configured limits only. `hard_constraints` are opinionated Japan defaults — retune them for your trip.
