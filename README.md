@@ -10,6 +10,10 @@ There are no sample itineraries, bookings, traveler profiles, or watch targets t
 2. Ask your agent to start planning with you and follow [`AGENTS.md`](AGENTS.md). It can fill in your trip name, dates, travelers, budget, and constraints as you decide them. You do not need to choose everything at setup.
 3. Review and merge small proposals as you go. `main` is the accepted trip; chat alone does not change it.
 
+You can start with: “Help me plan this trip. Read AGENTS.md, check what setup is missing, and guide me one step at a time.” Your agent needs a GitHub connection with the ability to save proposals. Alcove supplies review and memory; connecting it alone does not give the agent permission to edit this repository.
+
+You only need three ideas: **discussing an option**, **saving a proposal**, and **accepting a change**. Your agent handles the commits and branches, explains concerns before asking you to accept, and confirms when the accepted plan actually changed. You can return later and ask “Where were we?”
+
 Keep the configuration, schemas, engine, and GitHub workflow. They provide the checks for every new trip. The empty record folders are ready for your plans:
 
 | Path | Purpose |
