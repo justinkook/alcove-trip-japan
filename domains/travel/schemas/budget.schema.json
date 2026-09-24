@@ -5,7 +5,7 @@
   "required": ["schema_version", "currency", "hard_cap"],
   "properties": {
     "schema_version": {"const": 1},
-    "currency": {"type": "string", "pattern": "^[A-Z]{3}$"},
+    "currency": {"type": ["string", "null"], "pattern": "^[A-Z]{3}$"},
     "total": {"type": ["number", "null"]},
     "reserve": {"type": ["number", "null"]},
     "hard_cap": {"type": ["number", "null"]},
