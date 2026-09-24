@@ -1,6 +1,6 @@
 schema_version: 1
-currency: USD
-total: 0
+currency: null
+total: null
 reserve: null
 hard_cap: null
 categories: []

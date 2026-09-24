@@ -158,6 +158,14 @@ rules:
       equals: waived
     require_field: waived_reason
 
+  - id: budget-currency
+    type: required_when
+    document: budget
+    when:
+      field: hard_cap
+      not_in: [null]
+    require_field: currency
+
   - id: committed-spend
     type: bounded_sum
     record: booking

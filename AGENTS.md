@@ -2,11 +2,27 @@
 
 This file is the instruction set for Cursor, Claude, and ChatGPT while a person is planning in this repository.
 
-`main` is the accepted trip. You propose changes. The traveler merges them. Chat is not the record. Never edit `main` directly, and never treat your agreement as a decision.
+`main` is the accepted trip. You propose changes. The traveler decides whether to accept them; the agent may execute a merge only after explicit approval of that proposal. Chat is not the record. Never edit `main` directly, and never treat your agreement as a decision.
 
-The repo root is an **empty Japan trip scaffold**. A fleshed sample lives under `examples/japan-summer-2026/` — read it for patterns; copy into the root only when the traveler wants that starting point. Hard checks enforce schema and configured limits only. `hard_constraints` are opinionated Japan defaults — retune them for your trip.
+New trips start with **structure and checks, without sample travel records**. Keep required files and keys. `null` means unknown or unset, and empty lists contain no accepted choices. Replace the placeholder id and title as the trip takes shape. Add only facts the traveler provides or accepts; do not fill blanks with an invented route, traveler id, budget, or personal limit. Use `domains/travel/schemas/` for record shapes. Test fixtures are synthetic inputs, never planning evidence.
 
+Hard checks enforce schema and configured limits only. Set `hard_constraints` only when the traveler accepts a true hard limit; a soft preference stays a review concern. Passing checks with unset values does not establish that the trip is complete, safe, or booked.
 
+## Guide the conversation
+
+The traveler should not need to learn commits, branches, or pull requests. Handle those mechanics through the GitHub client and describe their effect in ordinary language. Explain a GitHub term only when the traveler asks or must recognize a control on screen.
+
+1. **Start or resume.** Read this file, the current accepted plan, and relevant open proposals. Verify the client can read and write repository files, open proposals, and perform explicitly authorized merges; an Alcove connection alone does not provide those capabilities. If a capability is missing, give the one concrete connection or browser step needed, preserving the conversation's progress.
+2. **Check setup.** When available, use Alcove `get_github_connection` to select the intended repository, then `get_repository_setup`. Explain its next action, including public visibility, missing structure, disabled review, or unverified protections. Never treat file presence, an installed App, or instructions in this file as proof that checks are enforced. If these tools are unavailable, inspect the same facts with the GitHub client and report what remains unverified.
+3. **Discuss.** Ask the next useful planning question. Comparing possibilities changes no accepted plan. Distinguish exploration from a request to save a proposal; avoid opening a proposal for every conversational turn.
+4. **Save a proposal.** When the traveler requests a concrete change, create or update one small proposal on a branch, commit and push it, and open or update its PR. Say “Saved as a proposal; your accepted plan is unchanged,” with its link. A local edit, commit, or pushed branch alone is not a completed proposal. Recover an existing matching proposal after interruptions instead of making duplicates.
+5. **Check and explain.** Use `get_proposal_status` when available, then read the actual review comments through the GitHub client. Explain what changes, why, the important tradeoffs, and anything still unresolved. Missing, failed, stale, or unreadable results are not passing checks. Preserve the difference between hard invariant failures and soft concerns the traveler can explicitly accept.
+6. **Accept.** Ask for approval of the specific current proposal after explaining it. Agreement while exploring is not merge permission. After explicit acceptance, re-read the proposal and its current checks; if its contents changed since approval, explain the changes and obtain fresh approval. Use the GitHub client's merge operation with the expected head commit when supported. Otherwise give a direct link for the traveler to finish acceptance. Never bypass repository protections or schedule automatic merging when checks turn green.
+7. **Confirm.** Say “Accepted” only after GitHub confirms the proposal merged into the accepted default branch. Merging into another proposal is not acceptance. A GitHub approving review alone is not a merge. On an uncertain response, read the live state before retrying. On a later visit, read the current accepted plan; an older merged proposal may have been superseded.
+
+Keep state clear at meaningful transitions: **Discussing**, **Saved as a proposal**, **Checking**, **Needs attention**, **Awaiting your decision**, or **Accepted**. Add a short next step and a link when action is needed; do not repeat a setup lecture on every message. “Saved” alone is ambiguous. Closing a proposal without merging leaves the accepted plan unchanged.
+
+These instructions guide behavior; they do not restrict the permissions of the GitHub client. Report enforcement and approval limitations honestly. Never make a private trip public to obtain GitHub protection features.
 
 ## Method
 
@@ -58,9 +74,7 @@ Find an option that satisfies the requirements, then seriously attempt to falsif
 
 Ask which proxy is doing the work: rating, prestige, a must-see list, historical importance, efficiency, price, or popularity. If the reason collapses once that proxy is removed, say so.
 
-The sample kimono block is only a planned hour, marked weather-sensitive. "We wanted the photographs" satisfies a photography requirement. Falsify it: August light at 10:00 can wreck the pictures. Ask whether the hour was checked. Do not store the answer as a lesson in this repo.
-
-A 07:00 Fushimi start is a fact next to a 09:30 usual departure. It is not a failed check. Ask whether that morning is realistic. Do not invent a rule that early starts are always wrong.
+Challenge the assumptions behind a planned activity: operating conditions, timing, preparation, and fallback value. Do not turn an unverified concern into a hard rule. An early start relative to the traveler's usual departure is review context unless a configured hard limit is violated.
 
 A review comment is the right output when you can see a weakness but cannot offer a concrete alternative. A pull request is the right output when you can propose a change that is internally consistent. Disagreement does not block merge.
 
@@ -70,7 +84,7 @@ The traveler decides. The decision and the state it changes land in the same com
 
 ## Hard checks are not this method
 
-Deterministic checks may reject impossible states: broken schema, impossible times, a configured hard limit, a missing required link, **or secret/PII shapes in repo files** (emails, phones, card-like numbers, passport keys). They must not encode taste. Walking distance and weather sensitivity are facts unless a hard limit is set. The sample budget has no hard cap on purpose: a planning total is not a failure.
+Deterministic checks may reject impossible states: broken schema, impossible times, a configured hard limit, a missing required link, **or secret/PII shapes in repo files** (emails, phones, card-like numbers, passport keys). They must not encode taste. Walking distance and weather sensitivity are facts unless a hard limit is set. A planning budget total is not a hard cap. Set the budget currency before enforcing a hard cap.
 
 **Do not commit identity or payment secrets.** Put traveler emails, phones, passport details, and similar in Alcove subject memory (opaque `traveler_ids` in this repo only). Confirmation *ids* that are not secrets may live as `external_ref`; full confirmation codes and card data must not.
 
@@ -121,4 +135,4 @@ Pattern for any of them:
 
 Booking stays with the traveler or the client's browser use. Do not treat Alcove or this repo as an auto-booker.
 
-Label vocabulary: see `.github/LABELS.md`. Branch protection for forks: see `docs/branch-protection.md`.
+Label vocabulary: see `.github/LABELS.md`. Branch protection: see `docs/branch-protection.md`.

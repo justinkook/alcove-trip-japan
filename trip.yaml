@@ -1,27 +1,26 @@
 schema_version: 1
-id: my-japan-trip
-title: My Japan trip
+id: my-trip
+title: My trip
 status: planning
-timezone: Asia/Tokyo
+timezone: null
 dates:
-  start: "2027-01-01"
-  end: "2027-01-08"
-traveler_ids: [traveler-a]
-route:
-  - {base: tokyo, nights: 7}
+  start: null
+  end: null
+traveler_ids: []
+route: []
 hard_constraints:
-  # Opinionated Japan defaults. Retune for your trip.
-  minimum_sleep_hours: 6
-  rolling_sleep_window_nights: 3
-  rolling_sleep_average_min_hours: 7
-  early_morning_before: "08:00"
-  consecutive_early_mornings_max: 1
-  meal_gap_hours_max: 6
-  minimum_transfer_margin_minutes: 20
-  maximum_walking_km: 15
-  maximum_independent_anchors_per_day: 2
-  weather_sensitive_spend_max: 150
-  weather_fallback_utility_min: 0.5
+  # null means unset. Set only limits the traveler accepts as hard constraints.
+  minimum_sleep_hours: null
+  rolling_sleep_window_nights: null
+  rolling_sleep_average_min_hours: null
+  early_morning_before: null
+  consecutive_early_mornings_max: null
+  meal_gap_hours_max: null
+  minimum_transfer_margin_minutes: null
+  maximum_walking_km: null
+  maximum_independent_anchors_per_day: null
+  weather_sensitive_spend_max: null
+  weather_fallback_utility_min: null
 must_haves: []
 assumptions:
-  normal_departure_local: "09:30"
+  normal_departure_local: null

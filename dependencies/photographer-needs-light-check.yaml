@@ -1,7 +1,0 @@
-schema_version: 1
-id: photographer-needs-light-check
-status: open
-kind: booking
-required_by: kyoto-photographer
-requires: null
-waived_reason: null
