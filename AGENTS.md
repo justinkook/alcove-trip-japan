@@ -119,4 +119,4 @@ Pattern for any of them:
 
 Booking stays with the traveler or the client's browser use. Do not treat Alcove or this repo as an auto-booker.
 
-Label vocabulary: see `.github/LABELS.md`. Branch protection for forks: see `docs/branch-protection.md`.
+Label vocabulary: see `.github/LABELS.md`. Branch protection: see `docs/branch-protection.md`.

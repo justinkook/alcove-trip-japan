@@ -14,7 +14,7 @@ Link Issues opened for unresolved Alcove review threads. Do not mark those threa
 
 ## Before merge
 
-- [ ] Placeholder traveler ids / dates updated if this is now your trip.
+- [ ] Known trip choices recorded; unknowns left unset, without invented traveler IDs or hard limits.
 - [ ] No passwords, passport numbers, confirmation codes, card data, emails, or phone numbers in repo files (Alcove subjects hold traveler PII).
 - [ ] Linked research/experiment/watch Issues if this PR answers a review concern or a hosted-watch finding.
 - [ ] `schema_version` unchanged unless intentionally bumping the open format (CI must stay green).

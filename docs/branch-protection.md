@@ -1,6 +1,6 @@
-# Branch protection (forks)
+# Branch protection
 
-`main` is the accepted trip. Forks should protect it so agents propose and humans merge.
+`main` is the accepted trip. Protect it in your repository so agents propose and humans merge.
 
 ## Recommended settings
 
@@ -10,7 +10,7 @@ In **Settings → Branches → Branch protection rule** for `main`:
 2. **Require conversation resolution before merging** — material Alcove review findings stay as unresolved threads until handled or risk-accepted
 3. **Require status checks to pass before merging**, including at least:
    - Deterministic engine CI — the existing GitHub Actions workflow named `check` (job `check`)
-   - `decision-review` — the Alcove GitHub App check (appears after the App is installed on the fork)
+   - `decision-review` — the Alcove GitHub App check (appears after the App has access and review is enabled for the repository)
 4. **Do not enable GitHub auto-merge** for this product — a human traveler merges after review
 
 Optional but useful: require branches to be up to date before merging; restrict who can push to `main`.
